@@ -80,13 +80,9 @@ afterEvaluate {
     publishing {
         publications {
             register<MavenPublication>("release") {
-                groupId = "com.github.bernardoslailati"
+                groupId = "com.github.BernardoSlailati"
                 artifactId = "localiza-jdc-designsystem"
                 version = "1.0"
-
-                afterEvaluate {
-                    from(components["release"])
-                }
             }
         }
     }
