@@ -78,8 +78,8 @@ dependencies {
 publishing {
     publications {
         register<MavenPublication>("release") {
-            groupId = "com.github.BernardoSlailati"
-            artifactId = "LocalizaJDCDesignSystem"
+            groupId = "com.github.bernardoslailati"
+            artifactId = "localiza-jdc-designsystem"
             version = "1.0"
 
             afterEvaluate {
