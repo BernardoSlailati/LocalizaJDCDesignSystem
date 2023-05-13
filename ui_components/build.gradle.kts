@@ -2,6 +2,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("maven-publish")
 }
 
 android {
@@ -49,7 +50,6 @@ android {
 
 dependencies {
 
-
     implementation(platform(libs.compose.bom))
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)
@@ -73,4 +73,21 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+
+afterEvaluate {
+    publishing {
+        publications {
+            register<MavenPublication>("release") {
+                groupId = "com.github.bernardoslailati"
+                artifactId = "localiza-jdc-designsystem"
+                version = "1.0"
+
+                afterEvaluate {
+                    from(components["release"])
+                }
+            }
+        }
+    }
 }
