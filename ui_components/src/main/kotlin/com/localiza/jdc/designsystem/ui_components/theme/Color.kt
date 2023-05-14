@@ -10,14 +10,19 @@ val Purple40 = Color(0xFF6650a4)
 val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
+val Gray30 = Color(0xFFD6D6D6)
+val Gray50 = Color(0xFF808080)
+
 val Green5 = Color(0xFF9AEF65)
 val Green20 = Color(0xFF7DDF20)
+val Green30 = Color(0xFF66C622)
 val Green80 = Color(0xFF01602A)
 val Green90 = Color(0xFF004521)
 val Black = Color(0xFF000000)
 val White = Color(0xFFFFFFFF)
 
 val Mint0 = Color(0xFFD1F5DC)
+val Mint70 = Color(0xFF006F41)
 val Mint80 = Color(0xFF005C3A)
 val Mint90 = Color(0xFF024A32)
 
