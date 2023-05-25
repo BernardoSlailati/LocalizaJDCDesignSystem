@@ -87,7 +87,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "com.github.bernardoslailati"
             artifactId = "LocalizaJDCDesignSystem"
-            version = "1.3"
+            version = "1.4"
 
             afterEvaluate {
                 from(components["release"])

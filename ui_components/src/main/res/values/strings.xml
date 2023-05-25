@@ -1,3 +1,4 @@
 <resources>
+    <string name="app_name">LocalizaJDCDesignSystem</string>
     <string name="button_icon_content_description">Ícone do Botão</string>
 </resources>
