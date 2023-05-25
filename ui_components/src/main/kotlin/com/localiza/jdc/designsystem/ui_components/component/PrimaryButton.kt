@@ -1,12 +1,18 @@
 package com.localiza.jdc.designsystem.ui_components.component
 
+import android.content.res.Configuration.UI_MODE_NIGHT_NO
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.annotation.DrawableRes
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -19,10 +25,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.localiza.jdc.designsystem.R
-import com.localiza.jdc.designsystem.ui_components.component.ButtonSize.NORMAL
 import com.localiza.jdc.designsystem.ui_components.theme.Gray30
 import com.localiza.jdc.designsystem.ui_components.theme.Gray50
 import com.localiza.jdc.designsystem.ui_components.theme.Green20
@@ -32,21 +36,12 @@ import com.localiza.jdc.designsystem.ui_components.theme.LECOPrimaryEnabledNorma
 import com.localiza.jdc.designsystem.ui_components.theme.LocalizaJDCMaterialTheme
 import com.localiza.jdc.designsystem.ui_components.theme.Mint70
 import com.localiza.jdc.designsystem.ui_components.theme.RACPrimaryEnabledNormalNoIcon
-import com.localiza.jdc.designsystem.ui_components.theme.Spacing
-
-enum class ButtonSize {
-    NORMAL,
-    X_SMALL,
-    SMALL,
-    LARGE,
-    X_LARGE
-}
+import com.localiza.jdc.designsystem.ui_components.theme.Typography
 
 @Composable
 fun LocalizaButton(
     modifier: Modifier,
     text: String,
-    size: ButtonSize = NORMAL,
     isLECO: Boolean,
     @DrawableRes iconStart: Int? = null,
     @DrawableRes iconEnd: Int? = null,
@@ -93,28 +88,90 @@ fun LocalizaButton(
 
 @Preview
 @Composable
-fun RACPrimaryButton() {
+fun previewRACPrimaryButton() {
     LocalizaJDCMaterialTheme {
-        LocalizaButton(
-            isLECO = false,
-            modifier = RACPrimaryEnabledNormalNoIcon.fillMaxWidth(),
-            text = "Compras",
-            onClick = {},
-            iconEnd = R.drawable.carrinho_de_compras
-        )
+        Column {
+            LocalizaButton(
+                isLECO = false,
+                modifier = RACPrimaryEnabledNormalNoIcon.fillMaxWidth(),
+                text = "Compras",
+                onClick = {},
+                iconEnd = R.drawable.carrinho_de_compras
+            )
+        }
     }
 }
 
-@Preview
 @Composable
-fun LECOPrimaryButton() {
+fun previewLECOPrimaryButton() {
     LocalizaJDCMaterialTheme {
-        LocalizaButton(
-            isLECO = true,
-            modifier = LECOPrimaryEnabledNormalNoIcon.fillMaxWidth(),
-            text = "Neutralização de Carbono",
-            onClick = {},
-            iconStart = R.drawable.neutraliza
-        )
+        Surface {
+            Column {
+                Text(text = "Bem-vindo ao Assistência Localiza!")
+                LocalizaButton(
+                    isLECO = true,
+                    modifier = LECOPrimaryEnabledNormalNoIcon.fillMaxWidth(),
+                    text = "Neutralização de Carbono",
+                    onClick = {},
+                    iconStart = R.drawable.neutraliza
+                )
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true, showSystemUi = true, uiMode = UI_MODE_NIGHT_NO)
+@Composable
+fun previewAssistenciaLocalizaLECOPrimaryButton() {
+    LocalizaJDCMaterialTheme {
+        Surface {
+            Column {
+                LocalizaTopAppBar()
+                Spacer(modifier = Modifier.height(24.dp))
+                Text(
+                    text = "Bem-vindo ao Assistência Localiza!",
+                    style = Typography.h5,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(36.dp)
+                )
+                Spacer(modifier = Modifier.height(24.dp))
+                LocalizaButton(
+                    isLECO = true,
+                    modifier = LECOPrimaryEnabledNormalNoIcon.fillMaxWidth().padding(36.dp),
+                    text = "Verificar situação de guincho",
+                    onClick = {},
+                    iconStart = R.drawable.mensagem_alerta
+                )
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true, showSystemUi = true, uiMode = UI_MODE_NIGHT_YES)
+@Composable
+fun previewLECOPrimaryButtonDark() {
+    LocalizaJDCMaterialTheme {
+        Surface {
+            Column {
+                LocalizaTopAppBar(isEndActionLECOLogo = false)
+                Spacer(modifier = Modifier.height(24.dp))
+                Text(
+                    text = "Bem-vindo ao Assistência Localiza!",
+                    style = Typography.h5,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(36.dp)
+                )
+                Spacer(modifier = Modifier.height(24.dp))
+                LocalizaButton(
+                    isLECO = false,
+                    modifier = LECOPrimaryEnabledNormalNoIcon.fillMaxWidth().padding(36.dp),
+                    text = "Verificar situação de guincho",
+                    onClick = {},
+                    iconStart = R.drawable.mensagem_alerta
+                )
+            }
+        }
     }
 }
