@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="border_width_none">0dp</dimen>
+    <dimen name="border_width_hairline">1dp</dimen>
+    <dimen name="border_width_thin">2dp</dimen>
+    <dimen name="border_width_thick">4dp</dimen>
+    <dimen name="border_width_heavy">8dp</dimen>
+</resources>

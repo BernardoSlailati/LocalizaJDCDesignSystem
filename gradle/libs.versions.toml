@@ -1,6 +1,6 @@
 [versions]
 accompanist-drawablepainter = "0.28.0"
-android-application = "8.1.0-beta01"
+android-application = "8.1.0-rc01"
 kotlin-android = "1.8.10"
 
 namespace = "com.localiza.jdc.designsystem"

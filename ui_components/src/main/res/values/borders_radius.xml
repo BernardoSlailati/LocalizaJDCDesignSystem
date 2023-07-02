@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="border_radius_none">0dp</dimen>
+    <dimen name="border_radius_ssm">0dp</dimen>
+    <dimen name="border_radius_sm">0dp</dimen>
+    <dimen name="border_radius_md">0dp</dimen>
+    <dimen name="border_radius_lg">0dp</dimen>
+    <dimen name="border_radius_pill">0dp</dimen>
+    <item name="border_radius_circular" type="dimen" format="float">1</item>
+</resources>

@@ -14,6 +14,9 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CarCrash
+import androidx.compose.material.icons.filled.ContactSupport
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -27,16 +30,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.localiza.jdc.designsystem.R
-import com.localiza.jdc.designsystem.ui_components.theme.Gray30
-import com.localiza.jdc.designsystem.ui_components.theme.Gray50
-import com.localiza.jdc.designsystem.ui_components.theme.Green20
-import com.localiza.jdc.designsystem.ui_components.theme.Green30
-import com.localiza.jdc.designsystem.ui_components.theme.Green80
-import com.localiza.jdc.designsystem.ui_components.theme.LECOPrimaryEnabledNormalNoIcon
-import com.localiza.jdc.designsystem.ui_components.theme.LocalizaJDCMaterialTheme
-import com.localiza.jdc.designsystem.ui_components.theme.Mint70
-import com.localiza.jdc.designsystem.ui_components.theme.RACPrimaryEnabledNormalNoIcon
-import com.localiza.jdc.designsystem.ui_components.theme.Typography
+import com.localiza.jdc.designsystem.ui_components.component.AlertType.*
+import com.localiza.jdc.designsystem.ui_components.theme.*
 
 @Composable
 fun LocalizaButton(
@@ -88,13 +83,29 @@ fun LocalizaButton(
 
 @Preview
 @Composable
+fun previewLECOPrimaryButton() {
+    LocalizaJDCMaterialTheme {
+        Column {
+            LocalizaButton(
+                isLECO = true,
+                modifier = RACPrimaryEnabledNormalNoIcon.fillMaxWidth(),
+                text = "Curtir",
+                onClick = {},
+                iconStart = R.drawable.like
+            )
+        }
+    }
+}
+
+@Preview
+@Composable
 fun previewRACPrimaryButton() {
     LocalizaJDCMaterialTheme {
         Column {
             LocalizaButton(
                 isLECO = false,
                 modifier = RACPrimaryEnabledNormalNoIcon.fillMaxWidth(),
-                text = "Compras",
+                text = "Comprar",
                 onClick = {},
                 iconEnd = R.drawable.carrinho_de_compras
             )
@@ -102,31 +113,27 @@ fun previewRACPrimaryButton() {
     }
 }
 
-@Composable
-fun previewLECOPrimaryButton() {
-    LocalizaJDCMaterialTheme {
-        Surface {
-            Column {
-                Text(text = "Bem-vindo ao Assistência Localiza!")
-                LocalizaButton(
-                    isLECO = true,
-                    modifier = LECOPrimaryEnabledNormalNoIcon.fillMaxWidth(),
-                    text = "Neutralização de Carbono",
-                    onClick = {},
-                    iconStart = R.drawable.neutraliza
-                )
-            }
-        }
-    }
-}
-
 @Preview(showBackground = true, showSystemUi = true, uiMode = UI_MODE_NIGHT_NO)
 @Composable
-fun previewAssistenciaLocalizaLECOPrimaryButton() {
+fun previewAppAssistenciaLocalizaLECOLightTheme() {
     LocalizaJDCMaterialTheme {
         Surface {
             Column {
-                LocalizaTopAppBar()
+                LocalizaTopAppBar(
+                    title = "Assistência",
+                    onClickStartAction = {
+                        // abrir menu de opções
+                    },
+                    navigationIcons = listOf(Icons.Filled.ContactSupport, Icons.Filled.CarCrash),
+                    onClickNavigationIcons = listOf(
+                        {
+                            // abrir tela de suporte ao cliente L&CO pelo site ou Whatsapp
+                        },
+                        {
+                            // abrir popup com informações do acidente ocorrido
+                        }
+                    )
+                )
                 Spacer(modifier = Modifier.height(24.dp))
                 Text(
                     text = "Bem-vindo ao Assistência Localiza!",
@@ -135,10 +142,19 @@ fun previewAssistenciaLocalizaLECOPrimaryButton() {
                         .fillMaxWidth()
                         .padding(36.dp)
                 )
-                Spacer(modifier = Modifier.height(24.dp))
+                Spacer(modifier = Modifier.height(16.dp))
+                LocalizaAlert(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(24.dp),
+                    type = AlertType.INFO,
+                    "Através deste aplicativo será possível solicitar um guincho, enviar e receber mensagens de nossa central de atendimento e acompanhar o andamento de seu chamado em tempo real."
+                )
                 LocalizaButton(
                     isLECO = true,
-                    modifier = LECOPrimaryEnabledNormalNoIcon.fillMaxWidth().padding(36.dp),
+                    modifier = LECOPrimaryEnabledNormalNoIcon
+                        .fillMaxWidth()
+                        .padding(36.dp),
                     text = "Verificar situação de guincho",
                     onClick = {},
                     iconStart = R.drawable.mensagem_alerta
@@ -150,7 +166,7 @@ fun previewAssistenciaLocalizaLECOPrimaryButton() {
 
 @Preview(showBackground = true, showSystemUi = true, uiMode = UI_MODE_NIGHT_YES)
 @Composable
-fun previewLECOPrimaryButtonDark() {
+fun previewAppAssistenciaLocalizaLECODarkTheme() {
     LocalizaJDCMaterialTheme {
         Surface {
             Column {
@@ -164,9 +180,16 @@ fun previewLECOPrimaryButtonDark() {
                         .padding(36.dp)
                 )
                 Spacer(modifier = Modifier.height(24.dp))
+                LocalizaAlert(
+                    modifier = Modifier.fillMaxWidth().padding(24.dp),
+                    type = WARNING,
+                    "Não foi possível obter as informações de contrato do veículo ABC1234.\nSolicite suporte de urgência no número 0800-703-900."
+                )
                 LocalizaButton(
                     isLECO = false,
-                    modifier = LECOPrimaryEnabledNormalNoIcon.fillMaxWidth().padding(36.dp),
+                    modifier = LECOPrimaryEnabledNormalNoIcon
+                        .fillMaxWidth()
+                        .padding(36.dp),
                     text = "Verificar situação de guincho",
                     onClick = {},
                     iconStart = R.drawable.mensagem_alerta
